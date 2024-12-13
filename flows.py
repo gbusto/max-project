@@ -1,36 +1,17 @@
 from prefect import flow, task
 from typing import List, Dict
+from data_sources import (
+    fetch_twitter_data,
+    fetch_youtube_data,
+    fetch_articles,
+    fetch_podcast_data
+)
 
 # Input Phase Tasks
 @task(name="Validate Input")
 def validate_input(name: str) -> str:
     print("Executing: Validate Input")
     return name
-
-
-# Data Collection Phase Tasks
-@task(name="Fetch Twitter Data")
-def fetch_twitter_data(name: str) -> Dict:
-    print("Executing: Fetch Twitter Data")
-    return {"platform": "twitter", "data": []}
-
-
-@task(name="Fetch Articles")
-def fetch_articles(name: str) -> Dict:
-    print("Executing: Fetch Articles")
-    return {"platform": "articles", "data": []}
-
-
-@task(name="Fetch YouTube Data")
-def fetch_youtube_data(name: str) -> Dict:
-    print("Executing: Fetch YouTube Data")
-    return {"platform": "youtube", "data": []}
-
-
-@task(name="Fetch Podcast Data")
-def fetch_podcast_data(name: str) -> Dict:
-    print("Executing: Fetch Podcast Data")
-    return {"platform": "podcast", "data": []}
 
 
 # Data Cleaning Phase Tasks

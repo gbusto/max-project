@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from flows import analyze_influencer
 from prefect import logging
 from logging import INFO
+from dotenv import load_dotenv
 
 # Configure Prefect logging to show in console
 logging.get_logger().setLevel(INFO)
